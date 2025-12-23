@@ -81,7 +81,7 @@ const PhysicsMesh: React.FC<PhysicsMeshProps> = ({ isDark }) => {
           positions.push(c.p1.x, c.p1.y, 0, c.p2.x, c.p2.y, 0);
         }
       }
-      geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
       geometry.attributes.position.needsUpdate = true;
     };
 
@@ -194,9 +194,9 @@ const PhysicsMesh: React.FC<PhysicsMeshProps> = ({ isDark }) => {
   }, [isDark]);
 
   return (
-    <div className={`fixed inset-0 z-0 transition-all duration-1000 ${isDark ? 'bg-[#020617]' : 'bg-[#1e3a8a]'}`}>
+    <div className={`fixed inset-0 z-0 transition-all duration-1000 ${isDark ? 'bg-[#0a1229]' : 'bg-[#1e3a8a]'}`}>
       <div ref={containerRef} className="w-full h-full opacity-70" />
-      <div className={`absolute bottom-4 left-6 hidden sm:block font-mono text-[9px] uppercase tracking-[0.2em] pointer-events-none transition-colors duration-1000 ${isDark ? 'text-blue-900/60' : 'text-blue-100/30'}`}>
+      <div className={`absolute bottom-4 left-6 hidden sm:block font-mono text-[9px] uppercase tracking-[0.2em] pointer-events-none transition-colors duration-1000 ${isDark ? 'text-blue-400/60' : 'text-blue-100/30'}`}>
         Blueprint.Engine // Stable
       </div>
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />

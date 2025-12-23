@@ -10,7 +10,8 @@ function App() {
   const [isPhoneLandscape, setIsPhoneLandscape] = useState(false);
 
   useEffect(() => {
-    document.body.style.backgroundColor = isDark ? '#020617' : '#1e3a8a';
+    // Dark mode is now a slightly lighter, deep navy (#0a1229) instead of near-black (#020617)
+    document.body.style.backgroundColor = isDark ? '#0a1229' : '#1e3a8a';
     document.body.style.transition = 'background-color 1s ease';
 
     const checkOrientation = () => {
@@ -28,7 +29,7 @@ function App() {
     <div className={`relative w-full h-screen overflow-hidden flex flex-col items-center justify-center transition-colors duration-1000 select-none`}>
       {/* Phone Landscape Warning Overlay */}
       {isPhoneLandscape && (
-        <div className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-[#020617] backdrop-blur-2xl p-8 text-center">
+        <div className={`fixed inset-0 z-[1000] flex flex-col items-center justify-center backdrop-blur-2xl p-8 text-center transition-colors duration-1000 ${isDark ? 'bg-[#0a1229]' : 'bg-[#1e3a8a]'}`}>
           <div className="w-12 h-12 mb-6 border border-blue-500/30 rounded-full flex items-center justify-center animate-bounce">
             <svg className="w-6 h-6 text-blue-400 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -46,7 +47,7 @@ function App() {
       
       {/* Header / UI Layer */}
       <div className="absolute top-0 w-full flex justify-between items-center px-6 md:px-12 py-5 md:py-8 z-50 pointer-events-none">
-        <div className={`hidden md:block font-mono text-[9px] tracking-[0.6em] uppercase transition-colors duration-1000 pointer-events-auto select-none ${isDark ? 'text-blue-900/60' : 'text-blue-100/40'}`}>
+        <div className={`hidden md:block font-mono text-[9px] tracking-[0.6em] uppercase transition-colors duration-1000 pointer-events-auto select-none ${isDark ? 'text-blue-400/60' : 'text-blue-100/40'}`}>
           ERROR 404 // PAGE NOT FOUND
         </div>
         <div className="pointer-events-auto ml-auto">
@@ -65,7 +66,7 @@ function App() {
       </main>
 
       {/* Decorative Footer Info (Desktop only) */}
-      <div className={`absolute bottom-8 right-8 hidden lg:block font-mono text-[8px] tracking-[0.5em] transition-opacity duration-1000 uppercase ${isDark ? 'text-blue-900/30' : 'text-blue-100/20'}`}>
+      <div className={`absolute bottom-8 right-8 hidden lg:block font-mono text-[8px] tracking-[0.5em] transition-opacity duration-1000 uppercase ${isDark ? 'text-blue-400/30' : 'text-blue-100/20'}`}>
         LOCATOR: DETACHED_STATE
       </div>
 
